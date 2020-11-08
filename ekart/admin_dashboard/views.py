@@ -36,3 +36,24 @@ class Login_view(TemplateView):
         else:
             messages.error(request,"Username And Password Required")
             return redirect('login')
+            
+class LogoutView(RedirectView):
+    
+    url = 'login'
+
+    def get(self, request, *args, **kwargs):
+
+        if request.user.is_authenticated:
+            logout(request)
+        
+        return super(LogoutView, self).get(request, *args, **kwargs)
+
+class Home_view(LoginRequiredMixin,TemplateView):
+
+    template_name = 'index.html'
+    login_url = 'login'
+
+    def get_context_data(self, **kwargs):
+
+        context = super(Home_view, self).get_context_data(**kwargs)
+        return context

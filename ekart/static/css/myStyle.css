@@ -1,0 +1,125 @@
+.font{
+    font-family: Dosis,sans-serif;
+}
+/* Delete Modal  */
+.modal-confirm {		
+    color: #636363;
+    width: 400px;
+}
+.modal-confirm .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+}
+.modal-confirm .modal-header {
+    border-bottom: none;   
+    position: relative;
+}
+.modal-confirm h4 {
+    text-align: center;
+    font-size: 26px;
+    margin: 30px 0 -10px;
+}
+.modal-confirm .close {
+    position: absolute;
+    top: -5px;
+    right: -2px;
+}
+.modal-confirm .modal-body {
+    color: #999;
+}
+.modal-confirm .modal-footer {
+    border: none;
+    text-align: center;		
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 10px 15px 25px;
+}
+.modal-confirm .modal-footer a {
+    color: #999;
+}		
+.modal-confirm .icon-box {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 50%;
+    z-index: 9;
+    text-align: center;
+    border: 3px solid #f15e5e;
+}
+.modal-confirm .icon-box i {
+    color: #f15e5e;
+    font-size: 46px;
+    display: inline-block;
+    margin-top: 13px;
+}
+.modal-confirm .btn {
+    color: #fff;
+    border-radius: 4px;
+    background: #60c7c1;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    min-width: 120px;
+    border: none;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0 5px;
+    outline: none !important;
+}
+.modal-confirm .btn-info {
+    background: #c1c1c1;
+}
+.modal-confirm .btn-info:hover, .modal-confirm .btn-info:focus {
+    background: #a8a8a8;
+}
+.modal-confirm .btn-danger {
+    background: #f15e5e;
+}
+.modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+    background: #ee3535;
+}
+.trigger-btn {
+    display: inline-block;
+    margin: 100px auto;
+}
+
+h5, .h5 {
+    font-size: 1.20em !important;
+    line-height: 1.4em;
+    margin-bottom: 15px;
+}
+.left-side-menu-new {
+    width: 240px;
+    background: linear-gradient(60deg, #dfa00d, #bb5307);
+    bottom: 0;
+    padding: 20px 0;
+    position: fixed;
+    transition: all .2s ease-out;
+    top: 0;
+    box-shadow: 0 0 24px 0 rgba(0,0,0,.06), 0 1px 0 0 rgba(0,0,0,.02);
+    z-index: 99;
+    border-top-right-radius:30px;
+    border-bottom-right-radius:30px;
+}
+.navbar-custom-new {
+    background-color: #ebeff2;
+    padding: 0 10px 0 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 65px;
+    z-index: 80;
+}
+.containernew{
+    width: 75%;
+    height: 50px;
+    overflow: hidden;
+  }
+.containernew img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
