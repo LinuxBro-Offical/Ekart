@@ -4,6 +4,8 @@ from django.views.generic import TemplateView ,RedirectView
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from .models import *
+from .forms import *
 # Create your views here.
 
 class Login_view(TemplateView):
@@ -57,3 +59,15 @@ class Home_view(LoginRequiredMixin,TemplateView):
 
         context = super(Home_view, self).get_context_data(**kwargs)
         return context
+
+class Categoryview(LoginRequiredMixin,TemplateView):
+    template_name = 'categories.html'
+    login_url = 'login'
+
+    def get_context_data(self, **kwargs):
+        context = super(Categoryview, self).get_context_data(**kwargs)
+        categories = Category.objects.all()
+        context["categories"] = categories
+        context["form"] = CategoryForm
+        return context
+

@@ -1,14 +1,14 @@
 {% load static %}
 <div class="left-side-menu-new">
     <div class="containernew">
-        <img src="{% static 'images/kart_logo.png'%}" alt="" width="90%" class="mb-4">
+        <img src="{% static 'images/logo_ekart.png'%}" alt="kart_logo" class="mb-4">
     </div>
     <div class="slimscroll-menu">
         <!--- Sidemenu -->
         <div id="sidebar-menu">
             <ul class="metismenu" id="side-menu">
                 <li style="margin-top: 6.5rem!important;">
-                    <a href="javascript:void(0)">
+                    <a href="{% url "category" %}">
                         <i class="fas fa-address-book  text-light"></i>
                         <span class="text-light"> Categories </span>
                     </a>
