@@ -8,47 +8,66 @@
         <div id="sidebar-menu">
             <ul class="metismenu" id="side-menu">
                 <li style="margin-top: 6.5rem!important;">
-                    <a href="{% url "category" %}">
-                        <i class="fas fa-address-book  text-light"></i>
-                        <span class="text-light"> Categories </span>
+                    <a href="{% url 'category' %}" class="sideactive">
+                        <div>
+                            <i class="fas fa-address-book  text-light"></i>
+                            <span class="text-light"> Categories </span>
+                        </div>
+                        <i class="mdi  mdi mdi-circle-medium"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'brand' %}" class="sideactive">
+                        <div>
+                            <i class="fab fa-contao  text-light"></i>
+                            <span class="text-light">Brands</span>
+                        </div>
+                        <i class="mdi  mdi mdi-circle-medium"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'product' %}" class="sideactive">
+                        <div>
+                            <i class="fas fa-cart-plus  text-light"></i>
+                            <span class="text-light">Products</span>
+                        </div>
+                        <i class="mdi  mdi mdi-circle-medium"></i>
                     </a>
                 </li>
                 <li>
                     <a href="javascript:void(0)">
-                        <i class="fab fa-contao  text-light"></i>
-                        <span class="text-light">Brands</span>
+                        <div>
+                            <i class="fas fa-dollar-sign text-light"></i>
+                            <span class="text-light">Offers</span>  
+                        </div>
+                        <i class="mdi  mdi mdi-circle-medium"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)">
-                        <i class="fas fa-cart-plus  text-light"></i>
-                        <span class="text-light">Products</span>
+                    <a href="javascript:void(0)" class="sideactive">
+                        <div>
+                            <i class=" fas fa-user-check text-light"></i>
+                            <span class="text-light">Sellers</span>
+                        </div>
+                        <i class="mdi  mdi mdi-circle-medium"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)">
-                        <i class="fas fa-dollar-sign text-light"></i>
-                        <span class="text-light">Offers</span>
-                     
+                    <a href="javascript:void(0)" class="sideactive">
+                        <div>
+                            <i class=" fas fa-check-double  text-light"></i>
+                            <span class="text-light">Orders</span>
+                        </div>
+                        <i class="mdi  mdi mdi-circle-medium"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:void(0)">
-                        <i class=" fas fa-user-check text-light"></i>
-                        <span class="text-light">Sellers</span>
-                     
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">
-                        <i class=" fas fa-check-double  text-light"></i>
-                        <span class="text-light">Orders</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">
-                        <i class="mdi mdi-poll text-light"></i>
-                        <span class="text-light">Reports</span>
+                    <a href="javascript:void(0)" class="sideactive">
+                        <div>
+                            <i class="mdi mdi-poll text-light"></i>
+                            <span class="text-light">Reports</span>
+                        </div>
+                        <i class="mdi  mdi mdi-circle-medium"></i>
                     </a>
                 </li>       
             </ul>

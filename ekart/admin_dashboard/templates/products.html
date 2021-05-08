@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 
-{% block title %} Kart69: Categories{% endblock %}
+{% block title %} Kart69: Products{% endblock %}
 {% block content %}
     <div class="p-3">
         <div class="crct_center">
@@ -10,105 +10,98 @@
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Logo</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody id="myTable">
-                {% for category in categories %}
-                    <tr>
-                        <td>{{category.name}}</td>
-                        <td>
-                            <div>
-                                <button class="btn btn-sm mr-2"><i class="far fa-eye text-dark"></i></button>
-                                <button class="btn btn-sm mr-2"><i class="dripicons-document-edit text-success"></i></button>
-                                <button class="btn btn-sm mr-2" data-toggle="modal" data-target="#myModal{{category.id}}"><i class=" fas fa-trash-alt text-danger"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                     <!-- Modal Delete Popup -->
-                        <div id="myModal{{category.id}}" class="modal fade">
-                            <div class="modal-dialog modal-confirm">
-                            <div class="modal-content">
-                                <div class="modal-header d-block">
+            <tbody>
+                {% for brand in products %}
+                <tr>
+                    <td>{{brand.name}}</td>
+                    <td><img src="/media/{{brand.logo.image}}" alt="brand logo" width="50%" height="100px"> </td>
+                    <td>
+                        <div>
+                            <button class="btn btn-sm mr-2"><i class="far fa-eye text-dark"></i></button>
+                            <button class="btn btn-sm mr-2"><i class="dripicons-document-edit text-success"></i></button>
+                            <button class="btn btn-sm mr-2" data-toggle="modal" data-target="#myModal{{brand.id}}"><i class=" fas fa-trash-alt text-danger"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Modal Delete Popup -->
+                <div id="myModal{{brand.id}}" class="modal fade">
+                    <div class="modal-dialog modal-confirm">
+                        <div class="modal-content">
+                            <div class="modal-header d-block">
                                 <div class="icon-box">
                                     <i class="fas fa-times"></i> 
                                 </div>				
                                 <h4 class="modal-title">Are you sure?</h4>	
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
+                            </div>
+                            <div class="modal-body">
                                 <p>Do you really want to delete these records? This process cannot be undone.</p>
-                                </div>
-                                <div class="modal-footer justify-content-center">
-                                <form action="{% url 'category_dlt' category.id %}" method="POST" enctype="multipart/form-data">
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <form action="{% url 'brand_dlt' brand.id %}" method="POST" enctype="multipart/form-data">
                                     {%csrf_token%}
                                     <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
-                                </div>
-                            </div>
                             </div>
                         </div>
-                {% endfor %}   
+                    </div>
+                </div>
+                {% endfor %}
             </tbody>
             <tfoot>
                 <tr>
                     <th>Name</th>
+                    <th>Logo</th>
                     <th>Action</th>
                 </tr>
             </tfoot>
         </table>
     </div>
 {% endblock %}
-<!-- modal  -->
-{% block modal_title %}Generate a Category{% endblock %}
+{% block modal_link %}href="{% url 'brand' %}"{% endblock %}
+{% block modal_title %}Create a Product{% endblock %}
 
 {% block modal_body %}
-    <div class="mt-1"></div>
-    {{form.name}}
-    <div class="mt-3"></div>
-    {{form.description}}
+    {{form.as_p}}
+    <div class="custom-file">
+        {{imageform.image}}
+        <label class="custom-file-label" for="customFile">Choose file</label>
+    </div>    
 {% endblock %}
-
 
 {% block script %} 
  <!-- working ajax script -->
 <script> 
-    $('#submit').on('submit',(event)=>{
-        let action = "{% url 'category' %}"
+    $('#id_name').on('change',()=>{
+        console.log("KITTY")
+        let action = "{% url 'brand_validate' %}"
         let token = "{{csrf_token}}"
-        let data = $('#submit').serialize()
-        event.preventDefault();
+        let data = document.getElementById('id_name').value
         $.ajax({
             type: "POST",
             url: action ,
-            data:data,
+            data:{"name":data},
             headers: { "X-CSRFToken": token },
             success: (data)=>{
                 console.log(data["status"])
-                console.log(data["message"]) 
                 if(data["status"]=="403"){
+                    console.log(data["message"]) 
                     $('#error_msg').html(`<i class=" mdi mdi-bell"></i>   ${data["message"]}`);
                     setTimeout(function(){document.getElementById("error_msg").innerHTML="";document.getElementById("submit").reset();}, 2000);
                 }
                 else{
-                    location.reload();
-                    // $( "#myTable" ).load( "/admin/table" );
-                    // $('#msg').html(`<i class=" mdi mdi-bell"></i> ${data["message"]}`)
-                    // setTimeout(function(){msg.innerHTML=""}, 3000);
-                    // $('.close').click();
-                    // document.getElementById("submit").reset();
-                    // var count = $("#myTable tr").length;
-                    // count += 1
-                    // console.log(count)
-                    // $('#example_info').html(`Showing 1 to ${count} of ${count} entries`)
+                    console.log(data["message"])
                 }
             },
         });
-       
     })
 </script>
-        {% if messages %}
+{% if messages %}
             <script>
                 document.addEventListener("DOMContentLoaded", function(event) {
                 toastr.options = { "closeButton": true, "debug": false, "newestOnTop": true,

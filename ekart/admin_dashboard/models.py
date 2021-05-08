@@ -16,8 +16,7 @@ class Image (models.Model):
 class Brand (models.Model):
     name = models.CharField(max_length = 50,unique = True)
     description = models.TextField(max_length = 250)
-    categories = models.ManyToManyField(Category, blank=True)
-    logo = models.ForeignKey(Image, on_delete=models.CASCADE)
+    logo = models.ForeignKey(Image, on_delete=models.CASCADE, blank=True ,null=True)
 
     def __str__(self):
         return self.name

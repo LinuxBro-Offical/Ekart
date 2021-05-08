@@ -410,3 +410,20 @@ h4{
     border-color:#e95207;
 }
 /* end  */
+
+#sidebar-menu>ul>li>a.active>.mdi-circle-medium{
+    color: #e2dfdf!important;
+    display: block !important;
+    margin-top: 0.2rem;
+    margin-left: 2.0rem;
+}
+#sidebar-menu>ul>li>a>.mdi-circle-medium{
+    display: none !important;
+}
+.active_div{
+    width: 2opx;
+}
+#sidebar-menu>ul>li>a{
+    display: flex;
+    justify-content: space-between;
+}
