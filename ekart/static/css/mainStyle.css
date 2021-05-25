@@ -1,0 +1,75 @@
+.navbar-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+.align-center{
+    align-items: center;
+}
+.justify-space-around{
+    justify-content: space-around;
+}
+.form-nav-input{
+    border: 1px;
+    border-radius: 2px 0 0 2px;
+    height: 38px;
+    margin-right: -2px;
+    font: 334 13.3333px Arial;
+    padding: 1rem;
+    color: rgb(66, 65, 65);
+    width: 564px;
+}
+.form-nav-button{
+    border: 1px;
+    height: 38px;
+    border-radius: 0.1rem;
+    background: #fff;
+    color:  rgb(83 116 167);                                    
+    font-size: 15px;
+}
+.form-nav-button i {
+    margin-right: 10px;
+}
+:focus-visible{
+    outline-width: 0 !important;
+}
+
+h5,h3{
+    font-family:'Roboto',sans-serif !important;
+}
+
+.relative-close{
+    position: relative;
+    left: 52px;
+    font-size: 30px;
+    bottom: 28px;
+    color: #ffff;
+    opacity: 1;
+}
+
+@media (min-width: 992px){
+    .modal-lg, .modal-xl {
+        max-width: 700px !important;
+        min-width: 650px !important;
+    }
+}
+
+.courousel-btn {
+    font-size: 3rem;
+    color: #ffffff;
+    opacity: 1;
+}
+.dropdown-menu.show {
+    top: 150% !important;
+}
+a:hover{
+    border-bottom: 3px solid #fcb432;
+}

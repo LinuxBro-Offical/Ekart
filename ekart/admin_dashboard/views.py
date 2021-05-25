@@ -10,6 +10,9 @@ from .forms import *
 from django.http import JsonResponse
 import json
 from django.core import serializers
+import datetime
+
+
 # Create your views here.
 
 class Login_view(TemplateView):
@@ -56,7 +59,7 @@ class LogoutView(RedirectView):
 
 class Home_view(LoginRequiredMixin,TemplateView):
 
-    template_name = 'index.html'
+    template_name = 'reports.html'
     login_url = 'login'
 
     def get_context_data(self, **kwargs):
@@ -158,16 +161,105 @@ class Productview(LoginRequiredMixin,TemplateView):
         try:
             productform = ProductForm(request.POST or None)
             imageform = ImageForm(request.POST,request.FILES or None)
+            print("valid ahno:",productform.is_valid())
+            print('form error',productform.errors)
             if productform.is_valid() and imageform.is_valid():
                 product = productform.save()
-                product.images = imageform.save()
-                brand.save()
+                product.images.add(imageform.save())
+                product.save()
                 messages.success(request,"A new Product added")
-                return redirect('brand')
-            messages.error(request,"Form is not valid")
+                return redirect('product')
+            messages.error(request,"Form not valid")
             return redirect('product')
         except:
             messages.error(request,"Can't read data")
             return redirect('product')
 
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url ="/admin/product"
 
+    def delete(self, request, *args, **kwargs):
+        messages.success(request,"Product deleted successfully")   
+        return super().delete(request, *args, **kwargs)
+
+#Offer
+class Offerview(LoginRequiredMixin,TemplateView):
+    template_name = 'offer.html'
+    login_url = 'login'
+
+    def get_context_data(self, **kwargs):
+        context = super(Offerview, self).get_context_data(**kwargs)
+        offers = Offer.objects.all()
+        context["offer"] = offers
+        context["datenow"] = datetime.date.today()
+        context["form"] = OfferForm
+        return context
+    def post(self,request):
+        try:
+            offerform = OfferForm(request.POST or None)
+            print('form error',offerform.errors)
+            print("form valid ahnu",offerform.is_valid())
+            if offerform.is_valid():
+                offerform.save()
+                messages.success(request,"New Offer Created")
+                return redirect('offer')
+            messages.error(request,"Form not valid")
+            return redirect('offer')
+        except:
+            messages.error(request,"Can't read data")
+            return redirect('offer')
+
+class OfferDeleteView(DeleteView):
+    model = Offer
+    success_url ="/admin/offer"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request,"Offer deleted successfully")   
+        return super().delete(request, *args, **kwargs)
+
+#Seller
+class Sellerview(LoginRequiredMixin,TemplateView):
+    template_name = 'seller.html'
+    login_url = 'login'
+
+    def get_context_data(self, **kwargs):
+        context = super(Sellerview, self).get_context_data(**kwargs)
+        sellers = Seller.objects.all()
+        context["seller"] = sellers
+        context["form"] = SellerForm
+        context["addressform"] = AddressForm
+        return context
+    def post(self,request):
+        try:
+            sellerform = SellerForm(request.POST or None)
+            addressform = AddressForm(request.POST or None)
+            if sellerform.is_valid() and addressform.is_valid():
+                seller = sellerform.save()
+                seller.address = addressform.save()
+                seller.save()
+                messages.success(request,"New Seller added")
+                return redirect('seller')
+            messages.error(request,"Form not valid")
+            return redirect('seller')
+        except:
+            messages.error(request,"Can't read data")
+            return redirect('seller')
+
+class SellerDeleteView(DeleteView):
+    model = Seller
+    success_url ="/admin/seller"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request,"Seller deleted successfully")   
+        return super().delete(request, *args, **kwargs)
+
+class Orderview(LoginRequiredMixin,TemplateView):
+    template_name = 'order.html'
+    login_url = 'login'
+
+    def get_context_data(self, **kwargs):
+        context = super(Orderview, self).get_context_data(**kwargs)
+        orders = Order.objects.all()
+        context["order"] = orders
+        return context

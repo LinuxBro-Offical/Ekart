@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'admin_dashboard',
     'user_site',
-    'phonenumber_field'
+    'phonenumber_field',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -84,6 +85,18 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+# 'default': {
+#     'ENGINE': 'django.db.backends.postgresql',
+#     'NAME': 'ekart_db',
+#     'USER': 'postgres',
+#     'PASSWORD':'1717resh',
+#     'HOST': 'ekart-db.cxiry3ypxsdl.us-east-2.rds.amazonaws.com',
+#     'PORT': '5432',
+#     }
+# }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -121,10 +134,30 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# AWS_ACCESS_KEY_ID = "AKIAR256J3CPSMKWWOMO"
+# AWS_SECRET_ACCESS_KEY = "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"
+# AWS_STORAGE_BUCKET_NAME = 'ananthusekart'
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+
+# AWS_LOCATION = 'static'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+# DEFAULT_FILE_STORAGE = 'ekart.storage_backends.MediaStorage'
 
 
 # MEDIA_ROOT is for server path to store files in the computer

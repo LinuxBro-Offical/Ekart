@@ -174,9 +174,19 @@ h5, .h5 {
 }
 
 .navbar-transparent {
-    padding-top: 15px;
     background-color: transparent;
     border-bottom: 1px solid transparent;
+    height: 62px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top:0;
+    z-index: 100;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
 }
 .main {
     background-color: #FFFFFF;
@@ -196,68 +206,8 @@ h5, .h5 {
 }
 
   
-  form {
-    outline: 0;
-    float: left;
-    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-  }
-  
-  form > .textbox {
-    outline: 0;
-    height: 42px;
-    width: 20rem;
-    line-height: 42px;
-    padding: 0 16px;
-    background-color:rgb(255 255 255);
-    color: #212121;
-    border: 0;
-    float: left;
-    -webkit-border-radius: 4px 0 0 4px;
-    border-radius: 4px 0 0 4px;
-  }
-  
-  form > .textbox:focus {
-    outline: 0;
-    background-color: #FFF;
-  }
-  
-  form > .button {
-    outline: 0;
-    background: none;
-    background-color:rgb(255 255 255);
-    float: left;
-    height: 42px;
-    width: 42px;
-    text-align: center;
-    line-height: 42px;
-    border: 0;
-    color: #FFF;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: 16px;
-    text-rendering: auto;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    -webkit-transition: background-color .4s ease;
-    transition: background-color .4s ease;
-    -webkit-border-radius: 0 4px 4px 0;
-    border-radius: 0 4px 4px 0;
-  }
-  
-  form > .button:hover {
-    background-color:#ffb5f9;
-  }
-  .h6{
-    margin: 10px 0;
-    font-weight: 600;
-    font-family: Karla,sans-serif;
-    color: #343a40;
-    font-size: .95rem;
-  }
-  a.h6:hover{
-    border-bottom: 2px solid #ff39ee;
-  }
+ 
+
 .border-bottom-custom{
     border-bottom: 1px solid #2874f0;
 }
@@ -265,13 +215,16 @@ h5, .h5 {
     background-color:#ff39ee
 }
 .bg-pink{
-    background:linear-gradient(20deg,#ff39ee, #2874f0)
+    background:linear-gradient(20deg,#2874f0, #024873);
 }
 .bg-orange{
     background-color:#fb641b;
 }
+.bg-blue{
+    background-color: #2874f0 !important;
+}
 .text-darkblue{
-    color: #2874f0;;
+    color: #2874f0;
 }
   .formcolor{
     background-image: linear-gradient(to top, #e86516 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
@@ -426,4 +379,62 @@ h4{
 #sidebar-menu>ul>li>a{
     display: flex;
     justify-content: space-between;
+}
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 1rem;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(150, 150, 150); 
+  }
+
+.modal-block-new{
+    background: linear-gradient(360deg,rgb(205 229 230),rgb(255 255 255));
+    height: 400px;
+    overflow-y: scroll;
+}
+p label {
+    font-weight: 600;
+    color: #696969;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 4px;
+}
+
+.card-box {
+    width: 277px;
+    padding: 1.5rem;
+    border-radius: .25rem;
+    border: 2px solid #e0e0e0;
+}
+.card-box-big {
+    width: 47%;
+    padding: 1.5rem;
+    border-radius: .25rem;
+    border: 2px solid #e0e0e0;
+}
+.report_row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.row-center{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+}
+.text-ash{
+    color: #d0d0d0!important;
 }
