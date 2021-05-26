@@ -24,13 +24,13 @@
   <link href="{% static 'css/mainStyle.css' %}" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
+<body class="pb-0">
     <div class="wrapper">
       {% include 'home/navbar.html' %}
   
       <!-- header image  -->
       
-
+    
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -45,7 +45,7 @@
           </div>
           <div class="carousel-item">
             <div class="blurred-container">
-              <div class="img-src" style="background-image: url('{%static 'images/banner3.jpg' %}');"></div>
+              <div class="img-src" style="background-image: url('{%static 'images/banner5.jpg' %}');"></div>
           </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -63,99 +63,388 @@
      
       
   
-        <!-- categories  -->
-        <div class="bg-white shadow border-bottom">
-          <div class="container">
-            <nav class="text-center p-2">
-              <a href="" class="h6 p-2 ml-1 bb text-secondary">NEW ARRIVALS</a>
-              <a href="" class="h6 p-2 ml-1 bb text-secondary">TEES</a>
-              <a href="" class="h6 p-2 ml-1 bb text-secondary">SHOES</a>
-              <a href="" class="h6 p-2 ml-1 bb text-secondary">JEWELARY</a>
-              <a href="" class="h6 p-2 ml-1 bb text-secondary">BEST SELLERS</a>
-            </nav>
-          </div>
-        </div>
+        
         
         <!-- user page main content  -->
         <div class="main">
+          <!-- categories  -->
+        <div id="categories" class="bg-white shadow border-bottom"> 
+          <div class="container">
+            <nav class="text-center p-1">
+              <a href="" class="h6 p-1 ml-1 bb text-secondary">NEW ARRIVALS</a>
+              <a href="" class="h6 p-1 ml-1 bb text-secondary">TEES</a>
+              <a href="" class="h6 p-1 ml-1 bb text-secondary">SHOES</a>
+              <a href="" class="h6 p-1 ml-1 bb text-secondary">JEWELARY</a>
+              <a href="" class="h6 p-1 ml-1 bb text-secondary">BEST SELLERS</a>
+            </nav>
+          </div>
+        </div>
+        <div class="dropdown">
+          <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" >
+            Dropdown
+          </button> -->
+          
+            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+            <li class="dropdown-submenu">
+            <a  class="dropdown-item" tabindex="-1" href="#">Hover me for more options</a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item"><a tabindex="-1" href="#">Second level</a></li>
+                  <li class="dropdown-submenu">
+                    <a class="dropdown-item" href="#">Even More..</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><a href="#">3rd level</a></li>
+                          <li class="dropdown-submenu"><a class="dropdown-item" href="#">another level</a>
+                          <ul class="dropdown-menu">
+                              <li class="dropdown-item"><a href="#">4th level</a></li>
+                              <li class="dropdown-item"><a href="#">4th level</a></li>
+                              <li class="dropdown-item"><a href="#">4th level</a></li>
+                          </ul>
+                        </li>
+                          <li class="dropdown-item"><a href="#">3rd level</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-item"><a href="#">Second level</a></li>
+                  <li class="dropdown-item"><a href="#">Second level</a></li>
+                </ul></li></ul>
+      </div>
           <div class="bg-white">
             <div class="container">
-              <div class="row pt-4">
               
-                  <div class="col-md-4 col-sm-4">
-                    <div class="card border" >
-                      <div class="img_container justify-content-center">
-                       
+              <div class="flex-col mt-4 shadow">
+                <div class="flex-row justify-space-between product-cont-head">
+                  <h4>Trending Gadgets</h4>
+                  <button class="btn-flipkart-blue shadow">VIEW ALL</button>
+                </div>
+                <div class="flex-row product-cont-body">
+
+                <div id="carouselExampleControlsproduct" class="carousel slide" data-ride="carousel" style="width: 100%;">
+                  <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="flex-row">
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/watch.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
                       </div>
-                      <div class="card-body">
-                        <h4 class="card-title text-blue"></h4>
-                        <p class="card-title"></p>
-                        <span class="bg-success p-1 text-white border">3.8 <i class=" fas fa-star"></i></span> (61)
-                        <div class="row">
-                          <h5 class="card-title font-weight-bold text-dark mt-2"></h5> <h5 class="card-title text-secondary line mt-2 ml-2"></h5>
-                        </div> 
-                    </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/watch.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/watch.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/watch.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-           
-              </div>
-              <div class="row pt-4">
-              
-                <div class="col-md-4 col-sm-4">
-                  <div class="card border" >
-                    <div class="img_container justify-content-center">
-                     
+                  <div class="carousel-item ">
+                    <div class="flex-row">
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/phone.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/phone.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/phone.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/phone.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="card-body">
-                      <h4 class="card-title text-blue"></h4>
-                      <p class="card-title"></p>
-                      <span class="bg-success p-1 text-white border">3.8 <i class=" fas fa-star"></i></span> (61)
-                      <div class="row">
-                        <h5 class="card-title font-weight-bold text-dark mt-2"></h5> <h5 class="card-title text-secondary line mt-2 ml-2"></h5>
-                      </div> 
                   </div>
                   </div>
+                  </div>
+
                 </div>
+              </div>
+            
+              
+
+
+
+
+              <div class="flex-col mt-4 shadow">
+                <div class="flex-row justify-space-between product-cont-head">
+                  <h4>Must-haves For Summer</h4>
+                  <button class="btn-flipkart-blue shadow">VIEW ALL</button>
+                </div>
+                <div class="flex-row product-cont-body">
+
+                <div id="carouselExampleControlsproduct" class="carousel slide" data-ride="carousel" style="width: 100%;">
+                  <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="flex-row">
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/watch.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/watch.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/watch.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/watch.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item ">
+                    <div class="flex-row">
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/phone.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/phone.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/phone.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="prod-card">
+                        <div class="flex-row justify-content-center">
+                          <div class="img-cont">
+                            <img src="{%static 'images/phone.png'%}" alt="">
+                          </div>
+                        </div>
+                        <div class="flex-col align-center">
+                          <h5 class="card-title text-blue">Fastrack A16</h5>
+                          <p class="card-title">Attractive black design</p>
+                          <div class="flex-row align-center mt-1">
+                            <span class="bg-green text-white mr-1">3.8 <i class=" fas fa-star"></i></span><h6>(61)</h6>
+                          </div>
+                          <div class="flex-row" style="align-items: baseline;">
+                            <h5 class="card-title font-weight-bold text-dark">₹1200</h5><h6 class="card-title text-secondary line ml-2">₹1345</h6><h6 class="text-green ml-1">30% Off</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+
+                </div>
+              </div>
          
-            </div>
-            <div class="row pt-4">
-              
-              <div class="col-md-4 col-sm-4">
-                <div class="card border" >
-                  <div class="img_container justify-content-center">
-                   
-                  </div>
-                  <div class="card-body">
-                    <h4 class="card-title text-blue"></h4>
-                    <p class="card-title"></p>
-                    <span class="bg-success p-1 text-white border">3.8 <i class=" fas fa-star"></i></span> (61)
-                    <div class="row">
-                      <h5 class="card-title font-weight-bold text-dark mt-2"></h5> <h5 class="card-title text-secondary line mt-2 ml-2"></h5>
-                    </div> 
-                </div>
-                </div>
-              </div>
-       
-          </div>
-          <div class="row pt-4">
-              
-            <div class="col-md-4 col-sm-4">
-              <div class="card border" >
-                <div class="img_container justify-content-center">
-                 
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title text-blue"></h4>
-                  <p class="card-title"></p>
-                  <span class="bg-success p-1 text-white border">3.8 <i class=" fas fa-star"></i></span> (61)
-                  <div class="row">
-                    <h5 class="card-title font-weight-bold text-dark mt-2"></h5> <h5 class="card-title text-secondary line mt-2 ml-2"></h5>
-                  </div> 
-              </div>
-              </div>
-            </div>
-     
-        </div>
             </div>
           </div>
           <!-- Modal -->
@@ -183,8 +472,10 @@
                       <label for="email" class="text-blue">Enter Password</label>
                       <input type="password" name="user[password]" id="user_password" class="form-control mb-3" placeholder="Password">
                       <button type="submit" class="btn btn-block bg-orange">Login</button>
+                      <div class="text-center"><h6 class="text-secondary">OR</h6></div>
+                      <button type="button" class="btn btn-block btn-otp shadow">Request OTP</button>
                       <div class="text-center mt-5">
-                        <a href="javascript:void(0)" id="signup"><h5 class="text-darkblue btn-link font-weight-bold">New to Kart69? Create an account</h5></a>
+                        <a href="javascript:void(0)" id="signup"><h6 class="text-darkblue btn-link font-weight-bold">New to Kart69? Create an account</h6></a>
                       </div>
                     </div>
                   </div>
@@ -219,7 +510,7 @@
                       <input type="text" class="form-control mb-3" placeholder="Mobile" name="user[mobile]" id="user_mobile">
                       <button class="btn btn-block bg-orange" type="submit" name="commit">Signup</button>
                       <div class="text-center mt-4">
-                        <a href="javascript:void(0)" id="login"><h5 class="text-darkblue btn btn-block btn-light shadow font-weight-bold">Existing User? Login</h5></a>
+                        <a href="javascript:void(0)" id="login"><h6 class="text-darkblue btn btn-block btn-light shadow font-weight-bold">Existing User? Login</h6></a>
                       </div>
                     </div>
                   </div>
@@ -228,13 +519,58 @@
             </div>
           </div>
           <!-- end of modal  -->
+          <footer>
+            <div class="flex-row justify-content-center bg-secondary">
+              <a href="#carouselExampleControls "><h6>Back to top</h6></a>
+            </div>
+            <div class="d-flex dlex-row p-2 justify-content-center">
+              <!-- 1st column  -->
+              <div class="flex-col p-5">
+                <h6 class="text-secondary">ABOUT</h6>
+                <a href="">About Us</a>
+                <a href="">Contact Us</a>
+                <a href="">Careers</a>
+              </div>
+              <!-- 2nd column  -->
+              <div class="flex-col p-5">
+                <h6 class="text-secondary">HELP</h6>
+                <a href="">Payments</a>
+                <a href="">Shipment</a>
+                <a href="">FAQ</a>
+                <a href="">Cancellation & Returns</a>
+              </div>
+              <!-- 3rd column  -->
+              <div class="flex-col p-5">
+                <h6 class="text-secondary">POLICY</h6>
+                <a href="">Return Policy</a>
+                <a href="">Terms Of Use</a>
+                <a href="">Security</a>
+                <a href="">Privacy</a>
+              </div>
+              <!-- 4th column  -->
+              <div class="flex-col p-5">
+                <h6 class="text-secondary">SOCIAL</h6>
+                <a href="">Facebook</a>
+                <a href="">Twitter</a>
+                <a href="">Instagram</a>
+              </div>
+              <!-- 5th column  -->
+              <div class="flex-col p-5 border-left">
+                <h6 class="text-secondary">Mail Us</h6>
+                <a href="">Kart69 Private Limited,</a>
+                <a href="">Nandhanam, Venmoney PO</a>
+                <a href="">Chengannur, PIN:689509</a>
+              </div>
+            </div>
+
+            <div class="flex-row justify-content-center align-center border-top">
+              
+            <img src="{% static 'images/logo_ekart.png'%}"  class="mr-1 mt-1" alt="logo" width="6%" style="height: 30px;">
+            <h6 class="text-white mt-3">© 1996-2021, Kart69.com, Inc. or its affiliates</h6>
+            </div>
+          </footer>
         </div>
         <!-- main end  -->
-  
-       
-  
-        
-  
   <!-- Vendor js -->
   <script src="{% static 'js/vendor.min.js'%}"></script>
   <!-- App js -->
@@ -260,7 +596,7 @@
     });
     // scroll 
     $(document).scroll(function() {
-      if( $(this).scrollTop() > 160 ) {
+      if( $(this).scrollTop() > 100 ) {
         if(transparent) {
           transparent = false;
           $('.navbar-transparent').addClass('bg-blue shadow');
@@ -270,6 +606,15 @@
           transparent = true;
           $('.navbar-transparent').removeClass('bg-blue shadow');
         }
+      }
+      if( $(this).scrollTop() > 480 ){
+        $('#categories').attr('style','position: fixed;top: 62px;width: 100%;z-index: 99;')
+        $('.navbar-transparent').removeClass('shadow');
+        // $('#nav_cate').removeClass('d-none')
+      }
+      else{
+        // $('#nav_cate').addClass('d-none')
+        $('#categories').attr('style','')
       }
     });
   </script>
