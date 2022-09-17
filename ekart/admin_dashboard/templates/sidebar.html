@@ -15,12 +15,21 @@
                         </div>
                         <i class="mdi  mdi mdi-circle-medium"></i>
                     </a>
-                </li> 
+                </li>
                 <li>
                     <a href="{% url 'category' %}" class="sideactive">
                         <div>
                             <i class="fas fa-address-book  text-light"></i>
                             <span class="text-light"> Categories </span>
+                        </div>
+                        <i class="mdi  mdi mdi-circle-medium"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'subcategory' %}" class="sideactive">
+                        <div>
+                            <i class="far fa-address-book text-light"></i>
+                            <span class="text-light"> Sub Categories </span>
                         </div>
                         <i class="mdi  mdi mdi-circle-medium"></i>
                     </a>
@@ -62,6 +71,15 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{% url 'deals' %}" class="sideactive">
+                        <div>
+                            <i class=" fas fa-gift text-light"></i>
+                            <span class="text-light">Deals Block</span>
+                        </div>
+                        <i class="mdi  mdi mdi-circle-medium"></i>
+                    </a>
+                </li>
+                <li>
                     <a href="{% url 'order' %}" class="sideactive">
                         <div>
                             <i class=" fas fa-check-double  text-light"></i>
@@ -69,7 +87,7 @@
                         </div>
                         <i class="mdi  mdi mdi-circle-medium"></i>
                     </a>
-                </li>      
+                </li>
             </ul>
         </div>
     </div>

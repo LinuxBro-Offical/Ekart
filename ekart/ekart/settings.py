@@ -85,6 +85,7 @@ DATABASES = {
     }
 }
 
+# AWS RDS CONFIGURATION
 # DATABASES = {
 # 'default': {
 #     'ENGINE': 'django.db.backends.postgresql',
@@ -137,12 +138,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
-
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static')
 ]
+
+# AWS S3 INTEGRATION
 
 # AWS_ACCESS_KEY_ID = "AKIAR256J3CPSMKWWOMO"
 # AWS_SECRET_ACCESS_KEY = "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"
@@ -162,5 +162,16 @@ STATICFILES_DIRS = [
 
 # MEDIA_ROOT is for server path to store files in the computer
 # MEDIA_URL is the reference URL for browser to access the files over Http
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# APIS
+# 1. Telynx sms KEY and Number (SMS API)
+API_KEY = 'KEY0179FF7F7C76E05973A743E9DA22420F_cn2Wqq0rkkAWntdIkYZsiL'
+FROM_NUMBER = "+18022275301"
+# 2. RemoveBG API (Baground removal from images)
+BG_REMOVE_API_KEY = 'rpX6iveA9qmnkGZqd3Zjvrzu'
+BG_REMOVE_URL = 'https://api.remove.bg/v1.0/removebg'
+
+AUTH_USER_MODEL = 'user_site.Enduser'
+# AUTHENTICATION_BACKENDS =['user_site.backend.CustomBackend']

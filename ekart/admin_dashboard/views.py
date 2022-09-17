@@ -1,12 +1,18 @@
+from django.conf import settings
 from django.shortcuts import render,redirect
 from django.views.generic import TemplateView, RedirectView
-from django.views.generic.edit import DeleteView 
-# from .forms import *  
+from django.views.generic.edit import DeleteView
+# from .forms import *
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
-from .models import *
-from .forms import *
+from .models import Category, Brand, Product, Offer, Seller, \
+                    Order, SubCategory
+from user_site.models import DisplayDeals
+from .forms import CategoryForm, BrandForm, ProductForm, ImageForm, \
+                DealsForm, OfferForm, SellerForm, AddressForm, \
+                SubcategoryForm
+from user_site.mixins import BGremove
 from django.http import JsonResponse
 import json
 from django.core import serializers
@@ -14,21 +20,20 @@ import datetime
 
 
 # Create your views here.
-
 class Login_view(TemplateView):
     template_name = 'login.html'
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect('login')
+            return redirect('home/')
         else:
-            context = super(Login_view, self).dispatch(request, *args, **kwargs)
+            context = super(Login_view, self).dispatch(request,
+                                                       *args, **kwargs)
         return context
 
-    def post(self,request):
-
-        username = request.POST.get('username','')
-        password = request.POST.get('password','')
+    def post(self, request):
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
         next_url = request.POST['next']
         if username and password:
             user = authenticate(request, username=username, password=password)
@@ -40,24 +45,24 @@ class Login_view(TemplateView):
                     return redirect(next_url)
                 return redirect('home')
             else:
-                messages.error(request,"Invalid Credentials")
+                messages.error(request, "Invalid Credentials")
                 return redirect('login')
         else:
-            messages.error(request,"Username And Password Required")
+            messages.error(request, "Username And Password Required")
             return redirect('login')
-            
+
+
 class LogoutView(RedirectView):
-    
     url = 'login'
 
     def get(self, request, *args, **kwargs):
 
         if request.user.is_authenticated:
             logout(request)
-        
         return super(LogoutView, self).get(request, *args, **kwargs)
 
-class Home_view(LoginRequiredMixin,TemplateView):
+
+class Home_view(LoginRequiredMixin, TemplateView):
 
     template_name = 'reports.html'
     login_url = 'login'
@@ -67,8 +72,9 @@ class Home_view(LoginRequiredMixin,TemplateView):
         context = super(Home_view, self).get_context_data(**kwargs)
         return context
 
+
 # Category
-class Categoryview(LoginRequiredMixin,TemplateView):
+class Categoryview(LoginRequiredMixin, TemplateView):
     template_name = 'categories.html'
     login_url = 'login'
 
@@ -78,28 +84,68 @@ class Categoryview(LoginRequiredMixin,TemplateView):
         context["categories"] = categories
         context["form"] = CategoryForm
         return context
-    def post(self,request):
+
+    def post(self, request):
         try:
             categoryform = CategoryForm(request.POST or None)
             if categoryform.is_valid():
                 categoryform.save()
-                messages.success(request,"Category created successfully")
+                messages.success(request, "Category created successfully")
                 return redirect('categories')
-            return JsonResponse({"status":403,"message":"Category name is already taken"})
+            return JsonResponse({"status": 403,
+                                 "message": "Category name is already taken"})
         except:
-            return JsonResponse({"status":404, "message":"Data not recived"})
-    
-class CategoryDeleteView(RedirectView): 
+            return JsonResponse({"status": 404,
+                                 "message": "Data not recived"})
+
+
+class CategoryDeleteView(RedirectView):
     url = '/admin/category'
 
-    def get(self,request,*args,**kwargs):
+    def get(self, request, *args, **kwargs):
         category = Category.objects.get(pk=kwargs["pk"])
         category.delete()
-        messages.error(request,"Category Deleted")
+        messages.error(request, "Category Deleted")
         return super(CategoryDeleteView, self).get(request, *args, **kwargs)
 
-#Brand
-class Brandview(LoginRequiredMixin,TemplateView):
+
+# Sub Category
+class SubcategoryView(LoginRequiredMixin, TemplateView):
+    template_name = 'subcategories.html'
+    login_url = 'login'
+
+    def get_context_data(self, **kwargs):
+        context = super(SubcategoryView, self).get_context_data(**kwargs)
+        context["subcategories"] = SubCategory.objects.all()
+        context["form"] = SubcategoryForm
+        return context
+
+    def post(self, request):
+        try:
+            subcategoryform = SubcategoryForm(request.POST or None)
+            if subcategoryform.is_valid():
+                subcategoryform.save()
+                messages.success(request, "Subcategory created successfully")
+                return redirect('categories')
+            return JsonResponse({"status": 403,
+                                 "message": "Subcategory name is already taken"})
+        except:
+            return JsonResponse({"status": 404,
+                                 "message": "Data not recived"})
+
+
+class SubcategoryDeleteView(RedirectView):
+    url = '/admin/subcategory'
+
+    def get(self, request, *args, **kwargs):
+        category = SubCategory.objects.get(pk=kwargs["pk"])
+        category.delete()
+        messages.error(request, "Subcategory Deleted")
+        return super(SubcategoryDeleteView, self).get(request, *args, **kwargs)
+
+
+# Brand
+class Brandview(LoginRequiredMixin, TemplateView):
     template_name = 'brands.html'
     login_url = 'login'
 
@@ -110,43 +156,49 @@ class Brandview(LoginRequiredMixin,TemplateView):
         context["form"] = BrandForm
         context["imageform"] = ImageForm
         return context
-    def post(self,request):
+
+    def post(self, request):
         try:
             brandform = BrandForm(request.POST or None)
-            imageform = ImageForm(request.POST,request.FILES or None)
+            imageform = ImageForm(request.POST, request.FILES or None)
             if brandform.is_valid() and imageform.is_valid():
                 brand = brandform.save()
                 brand.logo = imageform.save()
                 brand.save()
-                messages.success(request,"A new brand added")
+                messages.success(request, "A new brand added")
                 return redirect('brand')
-            messages.error(request,"Form is not valid")
+            messages.error(request, "Form is not valid")
             return redirect('brand')
         except:
-            messages.error(request,"Can't read data")
+            messages.error(request, "Can't read data")
             return redirect('brand')
+
 
 def validate_brandname(request):
     try:
         brandname = request.POST.get("name", None)
         print(brandname)
-        brand = Brand.objects.filter(name = brandname) 
-        if brand[0].name == brandname :
-            return JsonResponse({"status":403,"message":"Brand with same name already exists"})
+        brand = Brand.objects.filter(name=brandname)
+        if brand[0].name == brandname:
+            return JsonResponse({"status": 403,
+                                 "message": "Brand with same name already exists"})
     except:
-            return JsonResponse({"status":404, "message":"Valid name"})
+        return JsonResponse({"status": 404,
+                             "message": "Valid name"})
 
-class BrandDeleteView(RedirectView): 
+
+class BrandDeleteView(RedirectView):
     url = '/admin/brand'
 
-    def get(self,request,*args,**kwargs):
+    def get(self, request, *args, **kwargs):
         brand = Brand.objects.get(pk=kwargs["pk"])
         brand.delete()
-        messages.error(request,"Brand Deleted")
+        messages.error(request, "Brand Deleted")
         return super(BrandDeleteView, self).get(request, *args, **kwargs)
 
-#Product
-class Productview(LoginRequiredMixin,TemplateView):
+
+# Product
+class Productview(LoginRequiredMixin, TemplateView, BGremove):
     template_name = 'products.html'
     login_url = 'login'
 
@@ -157,34 +209,35 @@ class Productview(LoginRequiredMixin,TemplateView):
         context["form"] = ProductForm
         context["imageform"] = ImageForm
         return context
-    def post(self,request):
-        try:
-            productform = ProductForm(request.POST or None)
-            imageform = ImageForm(request.POST,request.FILES or None)
-            print("valid ahno:",productform.is_valid())
-            print('form error',productform.errors)
-            if productform.is_valid() and imageform.is_valid():
-                product = productform.save()
-                product.images.add(imageform.save())
-                product.save()
-                messages.success(request,"A new Product added")
-                return redirect('product')
-            messages.error(request,"Form not valid")
+
+    def post(self, request):
+        productform = ProductForm(request.POST or None)
+        imageform = ImageForm(request.POST, request.FILES or None)
+        print("valid ahno:", productform.is_valid())
+        print('form error', productform.errors)
+
+        if productform.is_valid() and imageform.is_valid():
+            product = productform.save()
+            product.images.add(imageform.save())
+            product.save()
+            self.remove_bg(str(settings.BASE_DIR)+imageform.instance.image.url)
+            messages.success(request, "A new Product added")
             return redirect('product')
-        except:
-            messages.error(request,"Can't read data")
-            return redirect('product')
+        messages.error(request, "Form not valid")
+        return redirect('product')
+
 
 class ProductDeleteView(DeleteView):
     model = Product
-    success_url ="/admin/product"
+    success_url = "/admin/product"
 
     def delete(self, request, *args, **kwargs):
-        messages.success(request,"Product deleted successfully")   
+        messages.success(request, "Product deleted successfully")
         return super().delete(request, *args, **kwargs)
 
-#Offer
-class Offerview(LoginRequiredMixin,TemplateView):
+
+# Offer
+class Offerview(LoginRequiredMixin, TemplateView):
     template_name = 'offer.html'
     login_url = 'login'
 
@@ -218,7 +271,7 @@ class OfferDeleteView(DeleteView):
         messages.success(request,"Offer deleted successfully")   
         return super().delete(request, *args, **kwargs)
 
-#Seller
+# Seller
 class Sellerview(LoginRequiredMixin,TemplateView):
     template_name = 'seller.html'
     login_url = 'login'
@@ -254,7 +307,7 @@ class SellerDeleteView(DeleteView):
         messages.success(request,"Seller deleted successfully")   
         return super().delete(request, *args, **kwargs)
 
-class Orderview(LoginRequiredMixin,TemplateView):
+class Orderview(LoginRequiredMixin, TemplateView):
     template_name = 'order.html'
     login_url = 'login'
 
@@ -263,3 +316,37 @@ class Orderview(LoginRequiredMixin,TemplateView):
         orders = Order.objects.all()
         context["order"] = orders
         return context
+
+
+# Deals
+class DealsCreateView(LoginRequiredMixin, TemplateView):
+    template_name = 'deals.html'
+    login_url = 'login'
+
+    def get_context_data(self, **kwargs):
+        context = super(DealsCreateView, self).get_context_data(**kwargs)
+        context["deals"] = DisplayDeals.objects.all()
+        context["form"] = DealsForm
+        return context
+
+    def post(self, request):
+        try:
+            dealsform = DealsForm(request.POST or None)
+            if dealsform.is_valid():
+                dealsform.save()
+                messages.success(request, "New Deals Block added")
+                return redirect('deals')
+            messages.error(request, "Form not valid")
+            return redirect('deals')
+        except:
+            messages.error(request, "Can't read data")
+            return redirect('deals')
+
+
+class DealsDeleteView(DeleteView):
+    model = DisplayDeals
+    success_url = "/admin/deals"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(request, "Deal block deleted successfully")
+        return super().delete(request, *args, **kwargs)

@@ -1,6 +1,6 @@
 from django import forms
 from .models import *
-
+from user_site.models import DisplayDeals
 
 class CategoryForm(forms.ModelForm):
     class Meta:
@@ -11,6 +11,18 @@ class CategoryForm(forms.ModelForm):
             'name':forms.TextInput(attrs={"class":"form-control","placeholder":"Enter category a name"}),
             'description':forms.Textarea(attrs={'class': 'form-control','placeholder':'What this category is about ?',"rows":"5"})
         }
+
+
+class SubcategoryForm(forms.ModelForm):
+    class Meta:
+        model = SubCategory
+
+        fields=['name','categories']
+        widgets={
+            'name':forms.TextInput(attrs={"class":"form-control","placeholder":"Enter category a name"}),
+            'categories':forms.Select(attrs={'class': 'form-control'}),
+        }
+
 
 class BrandForm(forms.ModelForm):
     class Meta:
@@ -35,18 +47,18 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
 
-        fields=['name','description','price','count','colours','specifications','categories','brand']
+        fields=['name','description','price','count','colours','specifications','subcategory','brand']
         widgets={
             'name':forms.TextInput(attrs={"class":"form-control","placeholder":"Enter Product name"}),
             'description':forms.Textarea(attrs={'class': 'form-control','placeholder':'Product description..',"rows":"5"}),
             'price':forms.NumberInput(attrs={'class':'form-control','placeholder':'Price'}),
             'count':forms.NumberInput(attrs={'class':'form-control','placeholder':'Number of products'}),
             'colours':forms.Select(attrs={'class': 'form-control'}),
-            'categories':forms.Select(attrs={'class': 'form-control'}),
+            'subcategory':forms.Select(attrs={'class': 'form-control'}),
             'specifications':forms.Textarea(attrs={'class': 'form-control','placeholder':'Product specifications..',"rows":"5"}),
-            'brand':forms.Select(attrs={'class': 'form-control'}),  
+            'brand':forms.Select(attrs={'class': 'form-control'}),
             'seller':forms.Select(attrs={'class': 'form-control'}),
-            'offer':forms.Select(attrs={'class': 'form-control'})   
+            'offer':forms.Select(attrs={'class': 'form-control'})
         }
 
 class OfferForm(forms.ModelForm):
@@ -74,6 +86,20 @@ class SellerForm(forms.ModelForm):
             'name':forms.TextInput(attrs={"class":"form-control","placeholder":"Enter Seller name"}),
             'number':forms.TextInput(attrs={"class":"form-control","placeholder":"xxxx xxxx xx"})  
         }
+
+
+class DealsForm(forms.ModelForm):
+    class Meta:
+        model = DisplayDeals
+
+        fields=['deal_name', 'product', 'is_active']
+        widgets={
+            'deal_name':forms.TextInput(attrs={"class":"form-control","placeholder":"Enter deal name"}),
+            'product':forms.Select(attrs={"class":"js-example-basic-multiple", "name": "states[]", "multiple": "multiple"}),
+            'is_active':forms.CheckboxInput
+        }
+
+
 class AddressForm(forms.ModelForm):
     class Meta:
         model = Address
@@ -85,5 +111,5 @@ class AddressForm(forms.ModelForm):
             'city':forms.TextInput(attrs={"class":"form-control","placeholder":"City"}),
             'state':forms.TextInput(attrs={"class":"form-control","placeholder":"State"}),
             'country':forms.TextInput(attrs={"class":"form-control","placeholder":"Country"}),
-            'pincode':forms.TextInput(attrs={"class":"form-control","placeholder":"Pin code"})        
+            'pincode':forms.TextInput(attrs={"class":"form-control","placeholder":"Pin code"})
         }

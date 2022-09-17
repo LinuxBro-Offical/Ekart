@@ -89,17 +89,17 @@
 {% block modal_title %}Create an Offer{% endblock %}
 
 {% block modal_body %}
-    {{form.as_p}}  
+    {{form.as_p}}
 {% endblock %}
 
-{% block script %} 
+{% block script %}
 <script>
     $(document).ready(function() {
         $('#modalbody').addClass("modal-block-new")
     })
 </script>
 <!-- working ajax script -->
-<script> 
+<script>
     $('#id_name').on('change',()=>{
         console.log("KITTY")
         let action = "{% url 'brand_validate' %}"
