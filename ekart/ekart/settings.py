@@ -155,8 +155,8 @@ STATICFILES_DIRS = [
 
 # AWS S3 INTEGRATION
 
-# AWS_ACCESS_KEY_ID = "AKIAR256J3CPSMKWWOMO"
-# AWS_SECRET_ACCESS_KEY = "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"
+# AWS_ACCESS_KEY_ID = ""
+# AWS_SECRET_ACCESS_KEY = ""
 # AWS_STORAGE_BUCKET_NAME = 'ananthusekart'
 # AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
@@ -178,10 +178,10 @@ MEDIA_URL = '/media/'
 
 # APIS
 # 1. Telynx sms KEY and Number (SMS API)
-API_KEY = 'KEY0179FF7F7C76E05973A743E9DA22420F_cn2Wqq0rkkAWntdIkYZsiL'
+API_KEY = ''
 FROM_NUMBER = "+18022275301"
 # 2. RemoveBG API (Baground removal from images)
-BG_REMOVE_API_KEY = 'rpX6iveA9qmnkGZqd3Zjvrzu'
+BG_REMOVE_API_KEY = ''
 BG_REMOVE_URL = 'https://api.remove.bg/v1.0/removebg'
 
 AUTH_USER_MODEL = 'user_site.Enduser'
