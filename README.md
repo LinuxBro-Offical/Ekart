@@ -32,10 +32,6 @@ Database: PostgreSQL
 Authentication: JSON Web Tokens (JWT)
 Deployment: Docker, Nginx, Supervisor
 
-
-### Run migrations before starting the Django app
-RUN python manage.py migrate
-
 ### Define the command to run your Django app
 
 docker-compose up --build
