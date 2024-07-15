@@ -1,9 +1,9 @@
 # eKart
 
-# Overview
+## Overview
 eKart is an e-commerce platform designed to provide a seamless online shopping experience for users. The platform offers a wide range of products across various categories, including electronics, fashion, home appliances, and more. As a full stack developer, I was responsible for developing and deploying this application, ensuring both the front-end and back-end are robust and scalable.
 
-# Features
+#$ Features
 User Authentication:
 
 Secure user registration and login.
@@ -33,14 +33,14 @@ Authentication: JSON Web Tokens (JWT)
 Deployment: Docker, Nginx, Supervisor
 
 
-# Run migrations before starting the Django app
+### Run migrations before starting the Django app
 RUN python manage.py migrate
 
-# Define the command to run your Django app
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+### Define the command to run your Django app
 
 docker-compose up --build
-Access the Application:
+
+**Access the Application:**
 
 Open your web browser and navigate to http://localhost:8000.
 
