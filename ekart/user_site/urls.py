@@ -8,5 +8,6 @@ urlpatterns = [
     path('cart/', views.CartView.as_view(),name="cart"),
     path('register/', views.RegisterView.as_view(),name="register"),
     path('login/', views.LoginView.as_view(),name="login"),
-    path('logout/', views.UserLogoutView.as_view(),name="user_logout")
+    path('logout/', views.UserLogoutView.as_view(),name="user_logout"),
+    path('signin', views.LoginAPIView.as_view(), name="signin")
 ]

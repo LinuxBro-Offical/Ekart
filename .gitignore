@@ -1,0 +1,8 @@
+ekart/admin_dashboard/__pycache__/
+ekart/admin_dashboard/migrations/
+ekart/ekart/__pycache__/
+ekart/user_site/
+ekart/user_site/migrations/
+ekart/db.sqlite3
+UI/
+ekart/env/

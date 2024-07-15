@@ -26,7 +26,7 @@ SECRET_KEY = 'va&b_#8sqz*ml1-7z2r_zgrd0p&6p(--nqm0db_*ff3ys0so0='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 
 
 # Application definition
@@ -84,6 +84,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mydb',
+#         'USER': 'ananthu',
+#         'PASSWORD': '1717reshmi',
+#         'HOST': 'db',
+#         'PORT': '5432',
+#     }
+# }
 
 # AWS RDS CONFIGURATION
 # DATABASES = {

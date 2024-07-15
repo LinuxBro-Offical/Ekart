@@ -1,0 +1,7 @@
+Normal Build : docker build -t ekart .
+Ekart Run : docker run -p 8000:8000 ekart
+
+Auto Update: add VOLUME /ekart
+Run command : docker run -p 8000:8000 -v /home/ananthu/Development/Python/ekart/ekart:/ekart ekart
+
+Run in Background : docker run -d -p 8000:8000 -v /home/ananthu/Development/Python/ekart/ekart:/ekart ekart
