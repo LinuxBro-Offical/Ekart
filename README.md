@@ -34,7 +34,10 @@ Deployment: Docker, Nginx, Supervisor
 
 ### Define the command to run your Django app
 
-docker-compose up --build
+
+```bash
+    docker-compose up --build
+```
 
 **Access the Application:**
 
